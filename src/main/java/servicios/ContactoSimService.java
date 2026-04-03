@@ -15,7 +15,7 @@ import java.util.*;
 @Service
 public class ContactoSimService implements InterfazContactoSim {
 
-    private static final String BASE_URL = "http://localhost:8080";
+    private static final String BASE_URL = "http://servicio:8080";
     private static final String USUARIO = "alumno";
 
     private final List<Entidad> entidades;

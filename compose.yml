@@ -1,0 +1,18 @@
+services:
+  trabajo:
+    image: trabajo-tt1
+    ports:
+      - "50000:50000"
+    networks:
+      - red-interna
+    depends_on:
+      - servicio
+
+  servicio:
+    image: javillour/servicio-tt1:amd64
+    networks:
+      - red-interna
+
+networks:
+  red-interna:
+    driver: bridge
