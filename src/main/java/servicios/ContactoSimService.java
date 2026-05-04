@@ -15,7 +15,7 @@ import java.util.*;
 @Service
 public class ContactoSimService implements InterfazContactoSim {
 
-    private static final String BASE_URL = "http://servicio:8080";
+    private static final String BASE_URL = "http://localhost:8080";
     private static final String USUARIO = "alumno";
 
     private final List<Entidad> entidades;
@@ -25,16 +25,22 @@ public class ContactoSimService implements InterfazContactoSim {
 
         Entidad e1 = new Entidad();
         e1.setId(0);
-        e1.setName("Test1");
+        e1.setName("BichitoQuieto");
         e1.setDescripcion("Nombre ejemplo");
 
         Entidad e2 = new Entidad();
         e2.setId(1);
-        e2.setName("Test2");
+        e2.setName("BichitoMovil");
         e2.setDescripcion("Nombre ejemplo");
+
+        Entidad e3 = new Entidad();
+        e3.setId(2);
+        e3.setName("BichitoMitosis");
+        e3.setDescripcion("Nombre ejemplo");
 
         entidades.add(e1);
         entidades.add(e2);
+        entidades.add(e3);
     }
 
     @Override
@@ -74,7 +80,7 @@ public class ContactoSimService implements InterfazContactoSim {
             while ((linea = br.readLine()) != null) sb.append(linea);
             String respuesta = sb.toString();
 
-            int token = extraerIntDeJson(respuesta, "tokenSolicitud");
+            int token = Integer.parseInt(respuesta);
             return token;
 
         } catch (Exception e) {

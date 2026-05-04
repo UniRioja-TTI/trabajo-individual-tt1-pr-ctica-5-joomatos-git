@@ -18,10 +18,10 @@ import modelo.DatosSolicitud;
 
 @Controller
 public class SolicitudController {
-	
+
 	private final InterfazContactoSim ics;
 	private final Logger logger;
-	
+
 	public SolicitudController(InterfazContactoSim ics, Logger logger) {
 		this.ics = ics;
 		this.logger = logger;
@@ -32,7 +32,7 @@ public class SolicitudController {
         model.addAttribute("entities", ics.getEntities());
         return "solicitud";
     }
-    
+
     @PostMapping("/solicitud")
     public String handleSolicitud(@RequestParam Map<String, String> formData, Model model) {
     	Map<Integer, Integer> validData = new HashMap<>();
@@ -60,13 +60,15 @@ public class SolicitudController {
         } else {
         	logger.info("Atendida petición");
         	DatosSolicitud ds = new DatosSolicitud(validData);
-        	int tok = ics.solicitarSimulation(ds);
+         	int tok = ics.solicitarSimulation(ds);
+            System.out.println(tok);
         	if(tok != -1) {
         		model.addAttribute("token", tok);
         	} else {
         		logger.error("Error en comunicación con servidor de simulación");
         	}
         }
+
         return "formResult";
     }
 }
